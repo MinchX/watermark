@@ -2,7 +2,7 @@ import sys
 from PyQt5.QtWidgets import (QApplication, QWidget, QPushButton, QFileDialog, QVBoxLayout, QHBoxLayout, 
                              QLabel, QLineEdit, QComboBox, QSpinBox, QMessageBox, QGroupBox)
 from PyQt5.QtGui import QPixmap, QFont, QIcon, QColor
-from PyQt5.QtCore import Qt
+from PyQt5.QtCore import Qt, QCoreApplication
 from PIL import Image, ImageDraw, ImageFont
 import os
 
@@ -14,7 +14,7 @@ class WatermarkApp(QWidget):
         self.watermark_image = None
 
     def initUI(self):
-        self.setWindowTitle('批量水印添加器')
+        self.setWindowTitle('水印')  # 更改窗口标题
         self.setGeometry(300, 300, 500, 400)
 
         # 设置应用图标
@@ -197,6 +197,11 @@ class WatermarkApp(QWidget):
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
+    
+    # 设置应用程序名称和组织
+    QCoreApplication.setApplicationName("水印")
+    QCoreApplication.setOrganizationName("YourCompanyName")
+    QCoreApplication.setOrganizationDomain("yourcompany.com")
     
     # 为整个应用程序设置图标
     icon_path = os.path.join(os.path.dirname(__file__), 'resources', 'app_icon.jpg')
